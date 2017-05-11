@@ -1,0 +1,8 @@
+prefix=/home/guesnier/catkin_ws/devel
+
+Name: archeo
+Description: Description of archeo
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/guesnier/catkin_ws/devel/lib 
+Requires: 

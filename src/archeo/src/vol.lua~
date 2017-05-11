@@ -1,0 +1,3 @@
+l=require("jakopter")
+print('hello from string:'..l.altitude())
+
