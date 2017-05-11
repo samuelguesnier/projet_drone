@@ -1,9 +1,9 @@
 local verificationXML = {}
 
-
 dofile("LuaXML-master/xml.lua")
 dofile("LuaXML-master/handler.lua")
 
+--xmlparser
 local filename = "waypoints.gpx"
 local xmltext = ""
 local f, e = io.open(filename, "r")
@@ -13,22 +13,14 @@ if f then
 else
   error(e)
 end
-
 --Instantiate the object the states the XML file as a Lua table
 local xmlhandler = simpleTreeHandler()
-
 --Instantiate the object that parses the XML to a Lua table
 local xmlparser = xmlParser(xmlhandler)
 xmlparser:parse(xmltext)
 
 
-function round(num, numDecimalPlaces)
-  local mult = 10^(numDecimalPlaces or 0)
-  return math.floor(num * mult + 0.5) / mult
-end
-
-
-
+--Fonction haverline pour les distances
 local function distance(x1, y1, x2, y2)
 r=0.017453292519943295769236907684886127;
 x1= x1*r; x2= x2*r; y1= y1*r; y2= y2*r; dy = y2-y1; dx = x2-x1;
@@ -36,9 +28,7 @@ a = math.pow(math.sin(dx/2),2) + math.cos(x1) * math.cos(x2) * math.pow(math.sin
 return d;
 end
 
-
-
-
+--Parcous simplement les points du fichier
   function verificationXML.parcours()
       clearwaypoint()
       takeoff()
@@ -95,7 +85,7 @@ end
 
       waypoint(pointB_lat,pointA_long,20,3,16)
       local pas = 0.0005
-        print("boucle1")
+  
 
       local longitudeActuelle = longitude()
 
